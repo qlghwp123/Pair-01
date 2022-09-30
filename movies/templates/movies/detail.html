@@ -2,19 +2,29 @@
 
 {% block content %}
 
+<div class="container text-white">
+    <div class="row">
+        <div class="col-9 mt-5">
+            <h1>{{ data.title }}</h1>
+            <p style="background-color:rgb(33,37,41);" class="text-white d-inline-block my-2">
+                리뷰 작성 날짜 : {{ data.created_at }}
+            </p>
+            <p>
+                별점 : {{ data.star }}
+            </p>
+            <p>
+                {{ data.content }}
+            </p>
 
+            <div class="my-5">
+                <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">리뷰
+                    수정</button>
+                <a class="btn btn-outline-danger" href="{% url 'movies:delete' _id=data.id %}">리뷰 삭제</a>
+            </div>
 
-<div>
-    <h1>제목: {{ data.title }}</h1>
-    {{ data.created_at }}
-    <p>
-        {{ data.content }}
-    </p>
-
+        </div>
+    </div>
 </div>
-
-<button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">리뷰 수정</button>
-<a class="btn btn-outline-danger" href="{% url 'movies:delete' _id=data.id %}">리뷰 삭제</a>
 
 
 <!-- 모달 -->
@@ -36,6 +46,18 @@
                         <label for="message-text" class="col-form-label">내용</label>
                         <textarea class="form-control" id="message-text" name="content">{{ data.content }}
                             </textarea>
+                    </div>
+                    <div class="input-group mb-3">
+                        <label class="input-group-text" for="StarSelect">별점</label>
+                        <select class="form-select" id="StarSelect" name="star">
+                            <!-- Set value when user pick the default one -->
+                            <option value="{{ data.star }}" selected>기존 별점 : {{ data.star }}</option>
+                            <option value="⭐">⭐</option>
+                            <option value="⭐⭐">⭐⭐</option>
+                            <option value="⭐⭐⭐">⭐⭐⭐</option>
+                            <option value="⭐⭐⭐⭐">⭐⭐⭐⭐</option>
+                            <option value="⭐⭐⭐⭐⭐">⭐⭐⭐⭐⭐</option>
+                        </select>
                     </div>
                 </div>
                 <div class="modal-footer">

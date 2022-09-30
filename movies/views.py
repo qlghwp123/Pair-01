@@ -19,8 +19,9 @@ def detail(request, _id):
 def write(request):
     _title = request.GET.get('title')
     _content = request.GET.get('content')
+    _star = request.GET.get('star')
 
-    Post.objects.create(title=_title, content=_content)
+    Post.objects.create(title=_title, content=_content, star=_star)
 
     return redirect('movies:index')
 
