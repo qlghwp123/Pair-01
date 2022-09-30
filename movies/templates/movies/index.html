@@ -14,13 +14,15 @@
   <tbody>
     {% for i in data %}
     <tr>
-      <th scope="row">{{ i.id }}</th>
-      <td><a>{{ i.title }}</a></td>
+      <th scope="row">{{ forloop.counter }}</th>
+      <td><a href="{% url 'movies:detail' _id=i.id %}">{{ i.title }}</a></td>
       <td>{{ i.created_at }}</td>
     </tr>
     {% endfor %}
   </tbody>
 </table>
+
+
 
 <!-- 모달 -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
