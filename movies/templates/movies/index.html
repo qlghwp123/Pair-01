@@ -19,6 +19,7 @@
                     <th scope="col">리뷰 제목</th>
                     <th scope="col">별점</th>
                     <th scope="col">작성 시간</th>
+                    <th scope="col">수정 시간</th>
                 </tr>
             </thead>
             <tbody>
@@ -28,6 +29,7 @@
                     <td><a class="text-decoration-none" href="{% url 'movies:detail' _id=i.id %}">{{ i.title }}</a></td>
                     <td>{{ i.star }}</td>
                     <td>{{ i.created_at }}</td>
+                    <td>{{ i.updated_at }}</td>
                 </tr>
                 {% endfor %}
             </tbody>

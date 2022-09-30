@@ -7,18 +7,26 @@
     <div class="row">
         <div class="col-9 mt-5">
             <h1>{{ data.title }}</h1>
-            <p style="background-color:rgb(33,37,41);" class="text-white d-inline-block my-2">
-                리뷰 작성 날짜 : {{ data.created_at }}
-            </p>
+            <div>
+                <p class="text-white d-block my-2">
+                    <span style="background-color:rgb(33,37,41);">리뷰 작성 날짜 : {{ data.created_at }}</span>
+                </p>
+                <p class="text-white d-block my-2">
+                    <span style="background-color:rgb(33,37,41);">리뷰 수정 날짜 : {{ data.updated_at }}</span>
+                </p>
+            </div>
             <p>
                 별점 : {{ data.star }}
             </p>
+            <hr />
             <p>
                 {{ data.content }}
             </p>
 
-            <div class="my-5">
-                <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">리뷰
+            <hr class="my-0" />
+
+            <div class="d-flex justify-content-end mt-3 mb-5">
+                <button class="btn btn-outline-primary me-3" data-bs-toggle="modal" data-bs-target="#exampleModal">리뷰
                     수정</button>
                 <a class="btn btn-outline-danger" href="{% url 'movies:delete' _id=data.id %}">리뷰 삭제</a>
             </div>

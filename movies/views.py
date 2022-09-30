@@ -28,9 +28,12 @@ def write(request):
 
 def update(request, _id):
     target = Post.objects.get(id=_id)
+    
     target.title = request.GET.get('title')
     target.content = request.GET.get('content')
+    target.star = request.GET.get('star')
     target.updated_at = datetime.date.today()
+
     target.save()
 
     return redirect('movies:detail', _id)
