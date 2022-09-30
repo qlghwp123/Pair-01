@@ -1,22 +1,27 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from .models import Post
 
 # Create your views here.
-def list(request):
+def index(request):
 
-    return render()
+    data = Post.objects.all().order_by('id')
+
+    return render(request, 'movies/index.html', {'data': data})
 
 def detail(request):
-
-    return render()
+    pass
 
 def write(request):
 
-    return render()
+    _title = request.GET.get('title')
+    _content = request.GET.get('content')
+
+    Post.objects.create(title=_title, content=_content)
+
+    return redirect('movies:index')
 
 def modify(request):
-
-    return render()
+    pass
 
 def delete(request):
-
-    return  render()
+    pass

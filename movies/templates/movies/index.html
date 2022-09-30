@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<a data-bs-toggle="modal" data-bs-target="#exampleModal">리뷰 작성</a>
+<table class="table table-hover align-middle text-center">
+  <thead>
+    <tr class="table-dark">
+      <th scope="col">리뷰 번호</th>
+      <th scope="col">리뷰 제목</th>
+      <th scope="col">작성 시간</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for i in data %}
+    <tr>
+      <th scope="row">{{ i.id }}</th>
+      <td><a>{{ i.title }}</a></td>
+      <td>{{ i.created_at }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<!-- 모달 -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">리뷰 작성</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form action="/movies/write" method="GET">
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">제목</label>
+            <input type="text" class="form-control" id="recipient-name" name="title">
+          </div>
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label">내용</label>
+            <textarea class="form-control" id="message-text" name="content"></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">리뷰 쓰기</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
